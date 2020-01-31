@@ -31,13 +31,7 @@ app.engine('handlebars', expHbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 app.set('views', path.join(__dirname, 'views'))
 
-const data = {
-    name: 'Tarciso Loiola'
-}
-
-app.get('/', (err, res, next ) => {
-  res.render('index', { data })
-})
+require("./routes/html-routes.js")(app);
 
 // Start the server
 app.listen(PORT, function () {
