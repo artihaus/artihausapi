@@ -29,9 +29,9 @@ app.use(express.static('public'))
 const expHbs = require('express-handlebars')
 app.engine('handlebars', expHbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
-app.set('views', path.join(__dirname, 'views'))
+// app.set('views', path.join(__dirname, 'views'))
 
-require("./routes/html-routes.js")(app);
+require('./routes/html-routes')(app);
 
 // Start the server
 app.listen(PORT, function () {
