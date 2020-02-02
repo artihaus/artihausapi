@@ -1,7 +1,9 @@
 //Dependencies
 const express = require('express')
 const bodyParser = require('body-parser')
+const mongoose = require('mongoose')
 const path = require('path')
+const routes = require('./routes')
 
 const PORT = process.env.PORT || 8080
 
@@ -31,7 +33,19 @@ app.engine('handlebars', expHbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 // app.set('views', path.join(__dirname, 'views'))
 
-require('./routes/html-routes')(app);
+app.use(routes)
+
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/Artipro'
+mongoose.Promise = Promise
+mongoose.connect(MONGODB_URI,
+  {
+    useCreateIndex: true,
+    useNewUrlParser: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true
+  })
+  .then(res => console.log('MongoDB is running!'))
+  .catch(err => console.log(err))
 
 // Start the server
 app.listen(PORT, function () {
