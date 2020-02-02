@@ -1,10 +1,9 @@
-const router = require('express').Router();
-const ArtihausWebAppController = require('../../controllers/artihaus-web-app-controller');
-
-// Matches with '/api/Users'
-router.route('/')
-.get(ArtihausWebAppController.read)
-
-
-
-module.exports = router;
+module.exports = function(app) {
+    app.get('/', function(req, res) {
+      res.render('index')
+    })
+  
+    app.get('/comp_pdf/:_id', function(req, res) {
+      res.render( 'comp_pdf' )
+    })
+  };
