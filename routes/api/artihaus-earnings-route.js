@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const ArtihausEarningsController = require("../../controllers/artihaus-earnigs-controller");
+const ArtihausEarningsController = require("../../controllers/artihaus-earnings-controller");
 
 // Matches with "/api/jobs"
 router.route("/create")

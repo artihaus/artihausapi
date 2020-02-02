@@ -34,7 +34,6 @@ app.set('view engine', 'handlebars')
 app.set('views', path.join(__dirname, 'views'))
 
 app.use(routes)
-// require("./routes/api/artihaus-web-app-route")(app);
 
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/Artipro'
 mongoose.Promise = Promise

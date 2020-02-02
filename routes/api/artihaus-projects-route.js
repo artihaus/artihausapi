@@ -1,21 +1,21 @@
 const router = require("express").Router();
-const ArtihausJobsController = require("../../controllers/artihaus-projects-controller");
+const ArtihausProjectsController = require("../../controllers/artihaus-projects-controller");
 
 // Matches with "/api/jobs"
 router.route("/create")
-.get(ArtihausJobsController.create)
+.get(ArtihausProjectsController.create)
 
 router.route("/read")
-.get(ArtihausJobsController.read)
+.get(ArtihausProjectsController.read)
 
 router.route("/read/:_id")
-.get(ArtihausJobsController.read_id)
+.get(ArtihausProjectsController.read_id)
 
 router.route("/update")
-.post(ArtihausJobsController.update)
+.post(ArtihausProjectsController.update)
 
 router.route("/delete")
-.get(ArtihausJobsController.delete)
+.get(ArtihausProjectsController.delete)
 
 
 module.exports = router;
