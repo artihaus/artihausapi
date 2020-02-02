@@ -26,4 +26,9 @@ router.use('/projects', ArtihausProjectsRoute)
 
 router.use('/timesheet', ArtihausTimeSheetRoute)
 
+// If no API routes are hit, send the app
+router.use(function(req, res) {
+    res.sendFile(path.join(__dirname, '../public/html/index.html'));
+  });
+
 module.exports = router;
