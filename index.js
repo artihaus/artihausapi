@@ -3,6 +3,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const path = require('path')
+const routes = require('./routes')
 
 const PORT = process.env.PORT || 8080
 
@@ -32,7 +33,8 @@ app.engine('handlebars', expHbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 app.set('views', path.join(__dirname, 'views'))
 
-require("./routes/api/artihaus-web-app-route")(app);
+app.use(routes)
+// require("./routes/api/artihaus-web-app-route")(app);
 
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/Artipro'
 mongoose.Promise = Promise

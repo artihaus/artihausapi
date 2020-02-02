@@ -11,7 +11,7 @@ module.exports = {
   },
 
   read: (req, res) => {
-    console.log(req.body)
+    console.log('TEST', req.body)
     db.Artihaus_Users
       .find(req.body)
       .then(data => res.status(200).json({
