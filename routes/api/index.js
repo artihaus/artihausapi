@@ -9,8 +9,6 @@ const ArtihausTimeSheetRoute = require('./artihaus-timesheet-route')
 
 
 //routes
-router.use( '/', ArtihausWebAppRoute )
-
 router.use( '/user', ArtihausUsersRoute )
 
 router.use('/earnings',ArtihausEarningsRoute)
