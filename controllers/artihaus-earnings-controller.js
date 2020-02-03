@@ -14,7 +14,6 @@ module.exports = {
   },
 
   read: (req, res) => {
-    console.log(req.body)
     db.Artihaus_Earnings
       .find(req.body).sort({ created: -1 })
       .then(data => res.status(200).json({
@@ -26,7 +25,6 @@ module.exports = {
 
   read_id: (req, res) => {
     const { _id } = req.params
-    console.log(req.params)
     db.Artihaus_Earnings
       .find({ _id })
       .then(data => res.status(200).json({
@@ -38,7 +36,6 @@ module.exports = {
 
   update: (req, res) => {
     const { _id } = req.body
-    console.log(req.body)
     db.Artihaus_Earnings
       .findOneAndUpdate({ _id }, { $set: req.body })
       .then(data => res.status(200).json({
@@ -49,7 +46,6 @@ module.exports = {
   },
 
   delete: (req, res) => {
-    console.log(req.body)
     db.Artihaus_Earnings
       .findById({ _id: req.body.id })
       .then(data => data.remove())

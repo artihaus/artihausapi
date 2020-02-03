@@ -33,7 +33,6 @@ module.exports = {
   update: (req, res) => {
     const { _id } = req.body
     delete req.body._id
-    console.log(req.body)
     db.Artihaus_Users
       .findOneAndUpdate({ _id }, { $set: req.body })
       .then(data => res.status(200).json(data))

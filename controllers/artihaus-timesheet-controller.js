@@ -11,7 +11,6 @@ module.exports = {
   },
 
   read: (req, res) => {
-    console.log(req.body)
     db.Artihaus_TimeSheet
       .find(req.body).sort({ started: -1 })
       .then(data => res.status(200).json({
@@ -22,7 +21,6 @@ module.exports = {
 
   read_id: (req, res) => {
     const { _id } = req.params
-    console.log(req.params)
     db.Artihaus_TimeSheet
       .find({ _id })
       .then(data => res.status(200).json({
@@ -35,7 +33,6 @@ module.exports = {
   update: (req, res) => {
     const { _id } = req.body
     delete req.body._id
-    console.log(req.body)
     db.Artihaus_TimeSheet
       .findOneAndUpdate({ _id }, { $set: req.body })
       .then(data => res.status(200).json(data))
