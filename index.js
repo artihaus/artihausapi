@@ -5,6 +5,8 @@ const mongoose = require('mongoose')
 const path = require('path')
 const routes = require('./routes')
 
+const server = require('./server/index')
+
 const PORT = process.env.PORT || 8080
 
 // Initialize Express
@@ -36,6 +38,8 @@ app.set('views', path.join(__dirname, 'views'))
 app.use(routes)
 
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/Artipro'
+let connected_to = 'Production'
+if( MONGODB_URI === 'mongodb://localhost/Artipro' ) connected_to = 'Development'
 mongoose.Promise = Promise
 mongoose.connect(MONGODB_URI,
   {
@@ -44,7 +48,7 @@ mongoose.connect(MONGODB_URI,
     useFindAndModify: false,
     useUnifiedTopology: true
   })
-  .then(res => console.log('MongoDB is running!'))
+  .then(res => console.log(`MongoDB is running ${connected_to}!`))
   .catch(err => console.log(err))
 
 // Start the server
