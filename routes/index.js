@@ -10,10 +10,6 @@ const ArtihausProjectsRoute = require('./api/artihaus-projects-route')
 const ArtihausTimeSheetRoute = require('./api/artihaus-timesheet-route')
 
 // API Routes
-router.get('/', function(req, res){
-    res.render('index')
-})
-
 router.use('/web', ArtihausWebAppRoute)
 
 router.use('/users', ArtihausUsersRoute)
