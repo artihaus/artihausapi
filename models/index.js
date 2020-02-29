@@ -9,7 +9,11 @@ module.exports = {
 
     Artihaus_Projects: require('./artihaus-projects-model'),
 
+    Artihaus_Jobs: require('./artihaus_jobs'),
+
     Artihaus_TimeSheet: require('./artihaus-timesheet-model'),
 
     Artihaus_Users: require('./artihaus-users-model'),
+
+    Artihaus_Clients: require('./artihaus-clients-model'),
 };

@@ -3,6 +3,7 @@ const router = require('express').Router();
 
 const ArtihausWebAppRoute = require('./api/artihaus-webapp-route')
 const ArtihausUsersRoute = require('./api/artihaus-users-route')
+const ArtihausClientsRoute = require('./api//artihaus-clients-route')
 const ArtihausEarningsRoute = require('./api/artihaus-earnings-route')
 const ArtihausExpensesRoute = require('./api/artihaus-expenses-route')
 const ArtihausProjectsRoute = require('./api/artihaus-projects-route')
@@ -16,6 +17,8 @@ router.get('/', function(req, res){
 router.use('/web', ArtihausWebAppRoute)
 
 router.use('/users', ArtihausUsersRoute)
+
+router.use('/clients', ArtihausClientsRoute)
 
 router.use('/earnings',ArtihausEarningsRoute)
 

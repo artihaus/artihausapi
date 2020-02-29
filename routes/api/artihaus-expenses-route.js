@@ -3,10 +3,14 @@ const ArtihausExpensesController = require("../../controllers/artihaus-expenses-
 
 // Matches with "/api/jobs"
 router.route("/create")
-.get(ArtihausExpensesController.create)
+.post(ArtihausExpensesController.create)
 
 router.route("/read")
 .get(ArtihausExpensesController.read)
+.post(ArtihausExpensesController.read)
+
+router.route("/read-false")
+.get(ArtihausExpensesController.read_false)
 
 router.route("/read/:_id")
 .get(ArtihausExpensesController.read_id)

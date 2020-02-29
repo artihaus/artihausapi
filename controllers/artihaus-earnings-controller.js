@@ -14,6 +14,7 @@ module.exports = {
   },
 
   read: (req, res) => {
+    console.log(req.body)
     db.Artihaus_Earnings
       .find(req.body).sort({ created: -1 })
       .then(data => res.status(200).json({

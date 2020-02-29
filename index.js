@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 const path = require('path')
 const routes = require('./routes')
 
-const server = require('./server/index')
+const service = require('./server/service')
 
 const PORT = process.env.PORT || 8080
 
@@ -13,10 +13,10 @@ const PORT = process.env.PORT || 8080
 const app = express()
 
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*')
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
-    next()
-  })
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+  next()
+})
 
 // Configure middleware
 
@@ -36,10 +36,10 @@ app.set('view engine', 'handlebars')
 app.set('views', path.join(__dirname, 'views'))
 
 app.use(routes)
-
+//development
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/Artipro'
-let connected_to = 'Production'
-if( MONGODB_URI === 'mongodb://localhost/Artipro' ) connected_to = 'Development'
+//production
+// const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://artihausapi:artihaus4153@ds149998.mlab.com:49998/heroku_09kfqkw9'
 mongoose.Promise = Promise
 mongoose.connect(MONGODB_URI,
   {
@@ -48,11 +48,11 @@ mongoose.connect(MONGODB_URI,
     useFindAndModify: false,
     useUnifiedTopology: true
   })
-  .then(res => console.log(`MongoDB is running ${connected_to}!`))
+  .then(res => console.log(`MongoDB is running!`))
   .catch(err => console.log(err))
 
 // Start the server
 app.listen(PORT, function () {
-    console.log('App running on port ' + PORT + '!')
+  console.log('App running on port ' + PORT + '!')
 })
 

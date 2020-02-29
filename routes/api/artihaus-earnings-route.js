@@ -7,6 +7,7 @@ router.route("/create")
 
 router.route("/read")
 .get(ArtihausEarningsController.read)
+.post(ArtihausEarningsController.read)
 
 router.route("/read/:_id")
 .get(ArtihausEarningsController.read_id)

@@ -4,13 +4,11 @@ const db = require("../models");
 module.exports = {
 
   create: (req, res) => {
+    console.log(req.body)
     db.Artihaus_Projects
       .create(req.body)
       .then(data => {
-        res.status(200).json({
-          message: 'ArtiPro Projects Create',
-          data
-        })
+        res.status(200).json(data)
     })
       .catch(err => res.status(422).json(err));
   },
@@ -19,10 +17,25 @@ module.exports = {
     db.Artihaus_Projects
       .find(req.body).sort({ started: -1 })
       .then(data => {
-        res.status(200).json({
-          message: 'ArtiPro Projects Read',
-          data
-        })
+        res.status(200).json(data)
+    })
+      .catch(err => res.status(422).json(err));
+  },
+
+  read_latest: (req, res) => {
+    db.Artihaus_Projects
+      .find(req.body).sort({ started: -1 }).limit(5)
+      .then(data => {
+        res.status(200).json(data)
+    })
+      .catch(err => res.status(422).json(err));
+  },
+
+  read_false: (req, res) => {
+    db.Artihaus_Projects
+      .find({ status: false }).sort({ started: -1 })
+      .then(data => {
+        res.status(200).json(data)
     })
       .catch(err => res.status(422).json(err));
   },
@@ -32,10 +45,7 @@ module.exports = {
     db.Artihaus_Projects
       .find({ _id })
       .then(data => {
-        res.status(200).json({
-          message: 'ArtiPro Projects Read By Id',
-          data
-        })
+        res.status(200).json(data)
     })
       .catch(err => res.status(500).json(err));
   },
@@ -45,25 +55,14 @@ module.exports = {
     delete req.body._id
     db.Artihaus_Projects
       .findOneAndUpdate({ _id }, { $set: req.body })
-      .then(data => {
-        res.status(200).json({
-          message: 'ArtiPro Projects Update',
-          data
-        })
-    })
+      .then(data => res.status(200).json(data))
       .catch(err => res.status(422).json(err))
   },
 
   delete: (req, res) => {
     db.Artihaus_Projects
-      .findById({ _id: req.body.id })
-      .then(data => data.remove())
-      .then(data => {
-        res.status(200).json({
-          message: 'ArtiPro Projects Delete',
-          data
-        })
-    })
+      .findOneAndRemove({ _id: req.body._id })
+      .then(data => res.status(200).json(data))
       .catch(err => res.status(422).json(err));
   },
 };

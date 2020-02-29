@@ -7,22 +7,27 @@ module.exports = {
     db.Artihaus_Expenses
       .create(req.body)
       .then(data => {
-        res.status(200).json({
-          message: 'ArtiPro Expenses Create',
-          data
-        })
+        res.status(200).json(data)
       })
-      .catch(err => res.status(422).json(err));
+      .catch(err => {
+        res.status(422).json(err)
+      });
   },
 
   read: (req, res) => {
     db.Artihaus_Expenses
-      .find(req.body).sort({ created: -1 })
+      .find(req.body).sort({ createdAt: -1 })
+      .then(data => res.status(200).json(data))
+      .catch(err => res.status(500).json(err));
+  },
+
+  read_false: (req, res) => {
+    db.Artihaus_Expenses
+      .find({
+        status: false
+      }).sort({ createdAt: -1 })
       .then(data => {
-        res.status(200).json({
-          message: 'ArtiPro Expenses Read',
-          data
-        })
+        res.status(200).json(data)
       })
       .catch(err => res.status(500).json(err));
   },
@@ -32,10 +37,7 @@ module.exports = {
     db.Artihaus_Expenses
       .find({ _id })
       .then(data => {
-        res.status(200).json({
-          message: 'ArtiPro Expenses Read By Id',
-          data
-        })
+        res.status(200).json(data)
       })
       .catch(err => res.status(500).json(err));
   },
@@ -44,12 +46,7 @@ module.exports = {
     const { _id } = req.body
     db.Artihaus_Expenses
       .findOneAndUpdate({ _id }, { $set: req.body })
-      .then(data => {
-        res.status(200).json({
-          message: 'ArtiPro Expenses Update',
-          data
-        })
-      })
+      .then(data => res.status(200).json(data))
       .catch(err => res.status(422).json(err))
   },
 
@@ -58,10 +55,7 @@ module.exports = {
       .findById({ _id: req.body.id })
       .then(data => data.remove())
       .then(data => {
-        res.status(200).json({
-          message: 'ArtiPro Expenses Delete',
-          data
-        })
+        res.status(200).json(data)
       })
       .catch(err => res.status(422).json(err));
   }
