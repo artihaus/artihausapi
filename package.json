@@ -17,7 +17,7 @@
     "nodemon": "^2.0.2"
   },
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -29,5 +29,8 @@
   "bugs": {
     "url": "https://github.com/artihaus/artihausapi/issues"
   },
-  "homepage": "https://github.com/artihaus/artihausapi#readme"
+  "homepage": "https://github.com/artihaus/artihausapi#readme",
+  "engines": {
+    "node": "^12.16.1"
+  }
 }

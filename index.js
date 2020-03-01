@@ -4,9 +4,8 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const path = require('path')
 const routes = require('./routes')
-const router = require('express').Router();
 
-const service = require('./server/service')
+// const service = require('./server/service')
 
 const PORT = process.env.PORT || 3001
 
@@ -36,12 +35,12 @@ app.engine('handlebars', expHbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 app.set('views', path.join(__dirname, 'views'))
 
-app.use(router)
 app.get('/', function(req, res){
   res.render('index')
 })
 
 app.use(routes)
+
 //development
 // const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/Artipro'
 //production
