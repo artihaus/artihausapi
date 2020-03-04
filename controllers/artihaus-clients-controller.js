@@ -21,6 +21,18 @@ module.exports = {
       .catch(err => res.status(500).json(err));
   },
 
+  read_date_range: (req, res) => {
+    const { start, end } = req.body
+    db.Artihaus_Clients
+      .find({
+        createdAt: { "$gte": start, "$lt": end}
+      }).sort({ createdAt: -1 })
+      .then(data => {
+        res.status(200).json(data)
+      })
+      .catch(err => res.status(500).json(err));
+  },
+
   update: (req, res) => {
     const { _id } = req.body
     delete req.body._id

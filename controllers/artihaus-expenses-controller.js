@@ -21,10 +21,11 @@ module.exports = {
       .catch(err => res.status(500).json(err));
   },
 
-  read_false: (req, res) => {
+  read_date_range: (req, res) => {
+    const { start, end } = req.body
     db.Artihaus_Expenses
       .find({
-        status: false
+        createdAt: { "$gte": start, "$lt": end}
       }).sort({ createdAt: -1 })
       .then(data => {
         res.status(200).json(data)

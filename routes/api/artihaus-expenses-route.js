@@ -9,8 +9,8 @@ router.route("/read")
 .get(ArtihausExpensesController.read)
 .post(ArtihausExpensesController.read)
 
-router.route("/read-false")
-.get(ArtihausExpensesController.read_false)
+router.route("/read-date-range")
+.post(ArtihausExpensesController.read_date_range)
 
 router.route("/read/:_id")
 .get(ArtihausExpensesController.read_id)

@@ -19,6 +19,18 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
 
+  read_date_range: (req, res) => {
+    const { start, end } = req.body
+    db.Artihaus_TimeSheet
+      .find({
+        createdAt: { "$gte": start, "$lt": end}
+      }).sort({ createdAt: -1 })
+      .then(data => {
+        res.status(200).json(data)
+      })
+      .catch(err => res.status(500).json(err));
+  },
+
   read_id: (req, res) => {
     const { _id } = req.params
     db.Artihaus_TimeSheet
