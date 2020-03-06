@@ -11,7 +11,6 @@ module.exports = {
   },
 
   read: (req, res) => {
-    console.log(req.body)
     db.Artihaus_Earnings
       .find(req.body).sort({ created: -1 })
       .then(data => res.status(200).json(data))
@@ -24,9 +23,7 @@ module.exports = {
       .find({
         createdAt: { "$gte": start, "$lt": end}
       }).sort({ createdAt: -1 })
-      .then(data => {
-        res.status(200).json(data)
-      })
+      .then(data => res.status(200).json(data))
       .catch(err => res.status(500).json(err));
   },
 

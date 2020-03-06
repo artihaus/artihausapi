@@ -4,21 +4,16 @@ const db = require("../models");
 module.exports = {
 
   create: (req, res) => {
-    console.log(req.body)
     db.Artihaus_Projects
       .create(req.body)
-      .then(data => {
-        res.status(200).json(data)
-    })
+      .then(data => res.status(200).json(data))
       .catch(err => res.status(422).json(err));
   },
 
   read: (req, res) => {
     db.Artihaus_Projects
       .find(req.body).sort({ started: -1 })
-      .then(data => {
-        res.status(200).json(data)
-    })
+      .then(data => res.status(200).json(data))
       .catch(err => res.status(422).json(err));
   },
 
@@ -28,27 +23,21 @@ module.exports = {
       .find({
         createdAt: { "$gte": start, "$lt": end}
       }).sort({ createdAt: -1 })
-      .then(data => {
-        res.status(200).json(data)
-      })
+      .then(data => res.status(200).json(data))
       .catch(err => res.status(500).json(err));
   },
 
   read_latest: (req, res) => {
     db.Artihaus_Projects
       .find(req.body).sort({ started: -1 }).limit(5)
-      .then(data => {
-        res.status(200).json(data)
-    })
+      .then(data => res.status(200).json(data))
       .catch(err => res.status(422).json(err));
   },
 
   read_false: (req, res) => {
     db.Artihaus_Projects
       .find({ status: false }).sort({ started: -1 })
-      .then(data => {
-        res.status(200).json(data)
-    })
+      .then(data => res.status(200).json(data))
       .catch(err => res.status(422).json(err));
   },
 
@@ -56,9 +45,7 @@ module.exports = {
     const { _id } = req.params
     db.Artihaus_Projects
       .find({ _id })
-      .then(data => {
-        res.status(200).json(data)
-    })
+      .then(data => res.status(200).json(data))
       .catch(err => res.status(500).json(err));
   },
 

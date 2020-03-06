@@ -19,7 +19,7 @@ router.route("/update")
 .post(ArtihausExpensesController.update)
 
 router.route("/delete")
-.get(ArtihausExpensesController.delete)
+.post(ArtihausExpensesController.delete)
 
 
 module.exports = router;

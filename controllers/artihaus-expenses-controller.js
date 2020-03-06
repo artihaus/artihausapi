@@ -4,11 +4,10 @@ const db = require("../models");
 module.exports = {
 
   create: (req, res) => {
+    console.log(req.body)
     db.Artihaus_Expenses
       .create(req.body)
-      .then(data => {
-        res.status(200).json(data)
-      })
+      .then(data => res.status(200).json(data))
       .catch(err => {
         res.status(422).json(err)
       });
@@ -27,9 +26,7 @@ module.exports = {
       .find({
         createdAt: { "$gte": start, "$lt": end}
       }).sort({ createdAt: -1 })
-      .then(data => {
-        res.status(200).json(data)
-      })
+      .then(data => res.status(200).json(data))
       .catch(err => res.status(500).json(err));
   },
 
@@ -37,9 +34,7 @@ module.exports = {
     const { _id } = req.params
     db.Artihaus_Expenses
       .find({ _id })
-      .then(data => {
-        res.status(200).json(data)
-      })
+      .then(data => res.status(200).json(data))
       .catch(err => res.status(500).json(err));
   },
 
@@ -52,12 +47,10 @@ module.exports = {
   },
 
   delete: (req, res) => {
+    console.log('DELETE EXPENSE', req.body)
     db.Artihaus_Expenses
-      .findById({ _id: req.body.id })
-      .then(data => data.remove())
-      .then(data => {
-        res.status(200).json(data)
-      })
+      .findOneAndDelete({ _id: req.body._id })
+      .then(data => res.status(200).json(data))
       .catch(err => res.status(422).json(err));
   }
 };

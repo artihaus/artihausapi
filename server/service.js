@@ -12,25 +12,31 @@ const MongoClient = require('mongodb').MongoClient
 
 // MongoClient.connect('mongodb://localhost/Artipro', function (err, dbb) {
 //     if (err) throw err
+//     let start = '2018-12-31'
+//     let end = '2019-07-15'
 //     const dbo = dbb.db('Artipro')
-//     dbo.collection('artipro_expenses').find({}).toArray(function (err, res_artipro_clients) {
+//     dbo.collection('artipro_expenses').find({
+//         createdAt: { "$gte": new Date('2018-12-31'), "$lt": new Date('2019-07-15') }
+//     }).toArray(function (err, res_artipro_expenses) {
 //         if (err) {
 //             console.log('ERROR 500!')
 //             dbb.close()
 //             throw err
 //         }
-//         let index = 0
-//         let delay = 2000
+//         console.log(res_artipro_expenses.length)
 
-//         db.Artihaus_Expenses
-//         .create(res_artipro_clients)
-//         .then( res => console.log( res ))
-//         .catch( err => console.log( err ))
-//         // let DataTransfer = setTimeout(request = () => {
+        // let index = 0
+        // let delay = 2000
 
-//         //     DataTransfer = setTimeout(request, delay)
-//         //     index++
-//         // }, delay)
+        // db.Artihaus_Expenses
+        // .create(res_artipro_expenses)
+        // .then( res => console.log( 'RES', res.length ))
+        // .catch( err => console.log( err ))
+        // let DataTransfer = setTimeout(request = () => {
+
+        //     DataTransfer = setTimeout(request, delay)
+        //     index++
+        // }, delay)
 //     })
 // })
 
