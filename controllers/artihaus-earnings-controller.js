@@ -12,7 +12,7 @@ module.exports = {
 
   read: (req, res) => {
     db.Artihaus_Earnings
-      .find(req.body).sort({ created: -1 })
+      .find(req.body).sort({ createdAt: -1 })
       .then(data => res.status(200).json(data))
       .catch(err => res.status(500).json(err));
   },
@@ -45,7 +45,7 @@ module.exports = {
 
   delete: (req, res) => {
     db.Artihaus_Earnings
-      .findById({ _id: req.body.id })
+      .findById({ _id: req.body._id })
       .then(data => data.remove())
       .then(data => res.status(200).json(data))
       .catch(err => res.status(500).json(err));

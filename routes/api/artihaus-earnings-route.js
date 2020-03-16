@@ -3,7 +3,7 @@ const ArtihausEarningsController = require("../../controllers/artihaus-earnings-
 
 // Matches with "/api/jobs"
 router.route("/create")
-.get(ArtihausEarningsController.create)
+.post(ArtihausEarningsController.create)
 
 router.route("/read")
 .get(ArtihausEarningsController.read)
@@ -16,7 +16,7 @@ router.route("/update")
 .post(ArtihausEarningsController.update)
 
 router.route("/delete")
-.get(ArtihausEarningsController.delete)
+.post(ArtihausEarningsController.delete)
 
 
 module.exports = router;
