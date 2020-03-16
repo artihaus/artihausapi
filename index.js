@@ -42,9 +42,9 @@ app.get('/', function(req, res){
 app.use(routes)
 
 //development
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/Artipro'
+// const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/Artipro'
 //production
-// const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://artihausapi:artihaus4153@ds149998.mlab.com:49998/heroku_09kfqkw9'
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://artihausapi:artihaus4153@ds149998.mlab.com:49998/heroku_09kfqkw9'
 mongoose.Promise = Promise
 mongoose.connect(MONGODB_URI,
   {
